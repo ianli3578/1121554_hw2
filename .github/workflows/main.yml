@@ -22,3 +22,11 @@ jobs:
 
       - name: Run script
         run: python api.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add result.json
+          git commit -m "Auto-update API result"
+          git push
