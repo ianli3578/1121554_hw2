@@ -2,7 +2,7 @@ name: HW2_Automation
 
 on:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -28,5 +28,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add result.json
-          git commit -m "Auto-update API result"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update API result" && git push)
